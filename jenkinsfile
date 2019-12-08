@@ -1,9 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('clone') {
+        stage('ready') {
             steps {
-                sh 'echo clone succeed'
+                sh 'echo ready'
+            }
+        }
+
+        stage('build') {
+            steps {
+                sh 'xcodebuild -scheme CIExample -project CIExample.xcodeproj/ build'
+                sh 'echo build succeed'
             }
         }
     }
